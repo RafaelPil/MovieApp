@@ -34,6 +34,8 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
     borderRadius: 10,
     overflow: "hidden",
+    borderWidth: 0.8,
+    borderColor: "#eee",
   },
 });
 
