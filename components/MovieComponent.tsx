@@ -1,3 +1,4 @@
+import { Link } from "expo-router";
 import { View, Text } from "../components/Themed";
 import { StyleSheet, Image, useWindowDimensions } from "react-native";
 
@@ -17,9 +18,11 @@ const MovieComponent = ({ item }: MovieComponentProps) => {
   const width = useWindowDimensions().width;
 
   return (
-    <View style={[styles.container, { width: width - 180 }]}>
-      <Image source={{ uri: item.image }} style={styles.image} />
-    </View>
+    <Link href={"./detailed"}>
+      <View style={[styles.container, { width: width - 180 }]}>
+        <Image source={{ uri: item.image }} style={styles.image} />
+      </View>
+    </Link>
   );
 };
 
