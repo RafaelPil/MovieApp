@@ -1,13 +1,35 @@
-import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Image,
+  Pressable,
+} from "react-native";
 import React from "react";
+import { AntDesign } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
 const Detailed = () => {
+  const router = useRouter();
+
+  const goBack = () => {
+    router.back();
+  };
   return (
     <ScrollView style={styles.container}>
       <Image
         source={{ uri: "https://i.ytimg.com/vi/yjRHZEUamCc/maxresdefault.jpg" }}
         style={styles.image}
       />
+      <Pressable style={styles.iconContainer} onPress={goBack}>
+        <AntDesign
+          name="left"
+          size={24}
+          color="#fff"
+          style={styles.iconStyle}
+        />
+      </Pressable>
 
       <View style={styles.imdbContainer}>
         <View style={styles.button}>
@@ -33,6 +55,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#000",
+  },
+  iconContainer: {
+    width: 40,
+    height: 40,
+    position: "absolute",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 30,
+    left: 5,
+  },
+  iconStyle: {
+    fontWeight: "bold",
   },
   image: {
     width: "100%",
