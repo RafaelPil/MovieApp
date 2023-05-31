@@ -2,15 +2,16 @@ import { View, Text, FlatList, StyleSheet } from "react-native";
 import React from "react";
 import moviesData from "../assets/data/moviesData";
 import MovieComponent from "./MovieComponent";
+import TopMovieComponent from "./TopMovieComponent";
 
-const MoviesComponents = () => {
+const TopMoviesComponents = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.headerText}>Movies</Text>
+      <Text style={styles.headerText}>Top 10 TV Movies</Text>
       <FlatList
         data={moviesData}
         keyExtractor={(e) => e.id}
-        renderItem={({ item }) => <MovieComponent item={item} />}
+        renderItem={({ item }) => <TopMovieComponent item={item} />}
         horizontal
         showsHorizontalScrollIndicator={false}
       />
@@ -31,4 +32,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MoviesComponents;
+export default TopMoviesComponents;

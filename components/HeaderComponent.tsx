@@ -15,13 +15,13 @@ const HeaderComponent = () => {
 
         <View style={styles.profileTextContainer}>
           <Text style={{ fontSize: 14, color: "#474747" }}>Hello,</Text>
-          <Text style={{ fontSize: 20, color: "#000", fontWeight: "600" }}>
+          <Text style={{ fontSize: 20, color: "#fff", fontWeight: "600" }}>
             John
           </Text>
         </View>
       </View>
 
-      <View style={{ marginVertical: 10 }}>
+      <View style={{ marginVertical: 10, backgroundColor: "#000" }}>
         <View style={styles.searchInputContainer}>
           <AntDesign
             name="search1"
@@ -44,9 +44,11 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 20,
     paddingTop: 40,
+    backgroundColor: "#000",
   },
   headerContainer: {
     flexDirection: "row",
+    backgroundColor: "#000",
   },
   profileImage: {
     width: 60,
@@ -56,18 +58,20 @@ const styles = StyleSheet.create({
   profileTextContainer: {
     marginLeft: 8,
     alignSelf: "center",
+    backgroundColor: "#000",
   },
   searchInputContainer: {
     flexDirection: "row",
     width: "100%",
     borderWidth: 1,
     borderRadius: 20,
-    backgroundColor: "#fff",
+    backgroundColor: "#000",
     alignItems: "center",
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderColor: "#f5f5f5",
     height: 45,
+    color: "#fff",
   },
   iconStyle: {
     marginRight: 10,
@@ -75,7 +79,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   inputStyle: {
-    color: "#474747",
+    color: "#fff",
     fontSize: 12,
     textDecorationLine: "none",
   },

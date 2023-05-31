@@ -2,20 +2,25 @@ import HeaderComponent from "../../components/HeaderComponent";
 import MovieComponent from "../../components/MovieComponent";
 import MoviesComponents from "../../components/MoviesComponents";
 import { View, Text } from "../../components/Themed";
-import { StyleSheet } from "react-native";
+import { StyleSheet, ScrollView } from "react-native";
+import TopMoviesComponents from "../../components/TopMoviesComponent";
+import FavouritesComponents from "../../components/FavouritesComponent";
 
 export default function TabOneScreen() {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <HeaderComponent />
 
       <MoviesComponents />
-    </View>
+      <TopMoviesComponents />
+      <FavouritesComponents />
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#000",
   },
 });
