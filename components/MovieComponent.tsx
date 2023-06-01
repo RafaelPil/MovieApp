@@ -8,6 +8,8 @@ export type MovieProps = {
   image: string;
   genre: string;
   description: string;
+  imdb: string;
+  movieTrailerLink: string;
 };
 
 type MovieComponentProps = {
@@ -18,7 +20,7 @@ const MovieComponent = ({ item }: MovieComponentProps) => {
   const width = useWindowDimensions().width;
 
   return (
-    <Link href={"./detailed"}>
+    <Link href={`/movie/${item.id}`}>
       <View style={[styles.container, { width: width - 180 }]}>
         <Image source={{ uri: item.image }} style={styles.image} />
       </View>

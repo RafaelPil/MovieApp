@@ -8,7 +8,7 @@ const MoviesComponents = () => {
     <Pressable style={styles.container}>
       <Text style={styles.headerText}>Movies</Text>
       <FlatList
-        data={moviesData}
+        data={moviesData.slice(0, 4)}
         keyExtractor={(e) => e.id}
         renderItem={({ item }) => <MovieComponent item={item} />}
         horizontal

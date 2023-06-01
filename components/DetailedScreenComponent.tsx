@@ -5,12 +5,19 @@ import {
   ScrollView,
   Image,
   Pressable,
+  Linking,
 } from "react-native";
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import { MovieProps } from "./MovieComponent";
 
-const Detailed = () => {
+type MovieComponentProps = {
+  movie: MovieProps;
+};
+
+const DetailedScreenComponent = ({ movie }: MovieComponentProps) => {
+  // console.log(movie);
   const router = useRouter();
 
   const goBack = () => {
@@ -19,9 +26,19 @@ const Detailed = () => {
   return (
     <ScrollView style={styles.container}>
       <Image
-        source={{ uri: "https://i.ytimg.com/vi/yjRHZEUamCc/maxresdefault.jpg" }}
+        source={{
+          uri: movie.image,
+        }}
         style={styles.image}
       />
+      <View style={styles.playButtonContainer}>
+        <Pressable
+          style={styles.playButton}
+          onPress={() => Linking.openURL(movie.movieTrailerLink)}
+        >
+          <AntDesign name="play" size={60} color={"rgba(255, 255, 255, 0.3)"} />
+        </Pressable>
+      </View>
       <Pressable style={styles.iconContainer} onPress={goBack}>
         <AntDesign
           name="left"
@@ -30,22 +47,14 @@ const Detailed = () => {
           style={styles.iconStyle}
         />
       </Pressable>
-
       <View style={styles.imdbContainer}>
         <View style={styles.button}>
-          <Text style={styles.buttonText}>IMDB 7.0</Text>
+          <Text style={styles.buttonText}>{`IMDB ${movie.imdb}`}</Text>
         </View>
       </View>
-      <Text style={styles.title}>John Wick 4</Text>
-
+      <Text style={styles.title}>{movie.title}</Text>
       <View style={styles.descriptionStyle}>
-        <Text style={styles.descriptionText}>
-          is simply dummy text of the printing and typesetting industry. Lorem
-          Ipsum has been the industry's standard dummy text ever since the
-          1500s, when an unknown printer took a galley of type and scrambled it
-          to make a type specimen book. It has survived not only five centuries,
-          but also the
-        </Text>
+        <Text style={styles.descriptionText}>{movie.description}</Text>
       </View>
     </ScrollView>
   );
@@ -70,9 +79,23 @@ const styles = StyleSheet.create({
   },
   image: {
     width: "100%",
-    height: 300,
-    resizeMode: "cover",
+    aspectRatio: 16 / 9,
+    resizeMode: "contain",
     overflow: "hidden",
+  },
+  playButtonContainer: {
+    position: "absolute",
+    top: "25%",
+    left: "50%",
+    transform: [{ translateX: -20 }, { translateY: -20 }],
+    zIndex: 1,
+  },
+  playButton: {
+    width: 60,
+    height: 60,
+    borderRadius: 20,
+    justifyContent: "center",
+    alignItems: "center",
   },
   imdbContainer: {
     paddingHorizontal: 10,
@@ -107,4 +130,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Detailed;
+export default DetailedScreenComponent;
