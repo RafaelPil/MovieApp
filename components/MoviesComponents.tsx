@@ -1,14 +1,18 @@
 import { View, Text, FlatList, StyleSheet, Pressable } from "react-native";
 import React from "react";
 import moviesData from "../assets/data/moviesData";
-import MovieComponent from "./MovieComponent";
+import MovieComponent, { MovieProps } from "./MovieComponent";
 
-const MoviesComponents = () => {
+type MoviesComponentsProps = {
+  movies: MovieProps[];
+};
+
+const MoviesComponents = ({ movies }: MoviesComponentsProps) => {
   return (
     <Pressable style={styles.container}>
       <Text style={styles.headerText}>Movies</Text>
       <FlatList
-        data={moviesData.slice(0, 4)}
+        data={movies.slice(0, 4)}
         keyExtractor={(e) => e.id}
         renderItem={({ item }) => <MovieComponent item={item} />}
         horizontal

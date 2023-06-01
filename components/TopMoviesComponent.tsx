@@ -2,13 +2,18 @@ import { View, Text, FlatList, StyleSheet } from "react-native";
 import React from "react";
 import TopMovieComponent from "./TopMovieComponent";
 import moviesData from "../assets/data/moviesData";
+import { MovieProps } from "./MovieComponent";
 
-const TopMoviesComponents = () => {
+type MoviesComponentsProps = {
+  movies: MovieProps[];
+};
+
+const TopMoviesComponents = ({ movies }: MoviesComponentsProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.headerText}>Top 10 TV Movies</Text>
       <FlatList
-        data={moviesData.slice(8, 12)}
+        data={movies.slice(8, 12)}
         keyExtractor={(e) => e.id}
         renderItem={({ item }) => <TopMovieComponent item={item} />}
         horizontal

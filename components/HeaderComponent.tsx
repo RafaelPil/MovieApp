@@ -3,7 +3,11 @@ import { StyleSheet, Image, TextInput } from "react-native";
 import { Text, View } from "../components/Themed";
 import { AntDesign } from "@expo/vector-icons";
 
-const HeaderComponent = () => {
+const HeaderComponent = ({
+  setSearchTitle,
+}: {
+  setSearchTitle: (value: string) => void;
+}) => {
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -33,6 +37,7 @@ const HeaderComponent = () => {
             placeholder="Find your movie"
             placeholderTextColor="#bebebe"
             style={styles.inputStyle}
+            onChangeText={setSearchTitle}
           />
         </View>
       </View>

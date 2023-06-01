@@ -1,19 +1,25 @@
+import { useState } from "react";
 import HeaderComponent from "../../components/HeaderComponent";
-import MovieComponent from "../../components/MovieComponent";
 import MoviesComponents from "../../components/MoviesComponents";
-import { View, Text } from "../../components/Themed";
 import { StyleSheet, ScrollView } from "react-native";
 import TopMoviesComponents from "../../components/TopMoviesComponent";
 import FavouritesComponents from "../../components/FavouritesComponent";
+import moviesData from "../../assets/data/moviesData";
 
 export default function TabOneScreen() {
+  const [searchTitle, setSearchTitle] = useState("");
+
+  const filteredMovies = moviesData.filter((movie) =>
+    movie.title.toLowerCase().includes(searchTitle.toLowerCase())
+  );
+
   return (
     <ScrollView style={styles.container}>
-      <HeaderComponent />
+      <HeaderComponent setSearchTitle={setSearchTitle} />
 
-      <MoviesComponents />
-      <TopMoviesComponents />
-      <FavouritesComponents />
+      <MoviesComponents movies={filteredMovies} />
+      <TopMoviesComponents movies={filteredMovies} />
+      <FavouritesComponents movies={filteredMovies} />
     </ScrollView>
   );
 }
